@@ -22,6 +22,14 @@ export class ApiService {
       );
   }
 
+  searchEventInGermany(term: String): Observable<TicketMasterData> {
+    return this.http.get<TicketMasterData>(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${term}&countryCode=DE&apikey=${this.ticketApiKey}`)
+      .pipe(
+        tap(res => console.log("success: ", res)),
+        catchError(this.handleError<TicketMasterData>('getHeroes'))
+      );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error("🐞 ERROR: ", error); 

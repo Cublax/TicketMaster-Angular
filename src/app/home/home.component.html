@@ -1,12 +1,10 @@
 <section>
-    <form>
-    <input type="text" placeholder="Search Event" #filter>
+  <form>
+    <input #searchBox type="text" placeholder="Search Event" (input)="search(searchBox.value)" >
     <button class="primary" type="button">Search</button>
   </form>
-  </section>
-  <section class="results">
-    <event 
-*ngFor="let eventElement of eventList" 
-[event]="eventElement">
-  </event>
+</section>
+
+<section class="results">
+  <event *ngFor="let eventElement of eventList" [event]="eventElement"></event>
 </section>
