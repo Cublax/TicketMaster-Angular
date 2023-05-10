@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { EventElement } from '../eventelement';
+import { Component, Input } from '@angular/core';
+import { Event } from '../TicketMasterData';
 
 @Component({
   selector: 'event',
@@ -8,6 +8,9 @@ import { EventElement } from '../eventelement';
 })
 
 export class EventComponent {
-  @Input() eventElement!: EventElement;
-  
+  @Input() event!: Event;
+
+  ngOnInit(): void {
+    console.log(this.event)
+  }
 }

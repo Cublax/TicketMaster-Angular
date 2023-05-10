@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { EventElement } from './eventelement';
+import { TicketMasterData } from './TicketMasterData';
 
 @Injectable({
   providedIn: 'root'
@@ -14,28 +14,20 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  // loadTicketmasterDataForGermany() {
-  //   return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=${this.ticketApiKey}`);
-  // }
-
-  loadTicketmasterDataForGermany(): Observable<EventElement[]> {
-    return this.http.get<EventElement[]>(`https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=${this.ticketApiKey}`)
+  loadTicketmasterDataForGermany(): Observable<TicketMasterData> {
+    return this.http.get<TicketMasterData>(`https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=${this.ticketApiKey}`)
       .pipe(
         tap(res => console.log("success: ", res)),
-        catchError(this.handleError<EventElement[]>('getHeroes', []))
+        catchError(this.handleError<TicketMasterData>('getHeroes'))
       );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error); 
+      console.error("🐞 ERROR: ", error); 
       return of(result as T);
     };
   }
 
-  async loadTicketmasterDataForGermanyAsync(): Promise<EventElement[]> {
-    return await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=${this.ticketApiKey}`)
-    .then(res=>res.clone().json())
-  }
 }
  

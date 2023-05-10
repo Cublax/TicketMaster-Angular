@@ -1,6 +1,11 @@
-<section class="listing">
+<!-- <section class="listing">
     <img class="listing-photo" [src]="eventElement.photo" alt="Exterior photo of {{eventElement.name}}">
     <h2 class="listing-heading">{{ eventElement.name }}</h2>
     <p class="listing-location">{{ eventElement.city}}, {{eventElement.state }}</p>
     <a>Learn More</a>
-  </section>
+  </section> -->
+
+  <div *ngIf="event">
+    <a>Learn More</a>
+  </div>
+  

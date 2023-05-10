@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventElement } from '../eventelement';
+import { Event } from '../TicketMasterData';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ApiService } from '../api.service';
 
 export class HomeComponent implements OnInit {
   
-  eventList: EventElement[] = [];
+  eventList: Event[] = [];
 
   constructor(private service: ApiService) { }
 
@@ -20,7 +20,8 @@ export class HomeComponent implements OnInit {
 
   getEvents(): void {
     this.service.loadTicketmasterDataForGermany()
-      .subscribe(events => this.eventList = events)
+      .subscribe(data => this.eventList = data._embedded.events);
+      console.log("LIST", this.eventList)
   }
   
 }
