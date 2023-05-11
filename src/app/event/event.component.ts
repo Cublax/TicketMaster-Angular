@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Event } from '../TicketMasterData';
-import { ApiService } from '../api.service';
 
 @Component({
   selector: 'event',
@@ -9,6 +8,7 @@ import { ApiService } from '../api.service';
 })
 
 export class EventComponent {
+
   @Input() event!: Event;
 
   ngOnInit(): void {

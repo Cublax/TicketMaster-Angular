@@ -14,7 +14,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  loadTicketmasterDataForGermany(): Observable<TicketMasterData> {
+  getDiscoveryEventGermany(): Observable<TicketMasterData> {
     return this.http.get<TicketMasterData>(`https://app.ticketmaster.com/discovery/v2/events.json?countryCode=DE&apikey=${this.ticketApiKey}`)
       .pipe(
         tap(res => console.log("success: ", res)),

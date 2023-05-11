@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Event, TicketMasterData } from '../TicketMasterData';
 import { ApiService } from '../api.service';
 import { Observable, Subject } from 'rxjs';
-import {
-  debounceTime, distinctUntilChanged, switchMap
-} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -28,12 +26,12 @@ export class HomeComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term: string) => this.service.searchEventInGermany(term)),
     );
-    
+
     this.searchResponse$.subscribe(data => this.eventList = data._embedded.events);
   }
 
   getEvents(): void {
-    this.service.loadTicketmasterDataForGermany()
+    this.service.getDiscoveryEventGermany()
       .subscribe(data => this.eventList = data._embedded.events);
       console.log("LIST", this.eventList)
   }
