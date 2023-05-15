@@ -3,6 +3,7 @@ import { Event, TicketMasterData } from '../TicketMasterData';
 import { ApiService } from '../api.service';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import {GridEvent} from "../GridEvent";
 
 @Component({
   selector: 'app-home',
@@ -11,9 +12,9 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 })
 
 export class HomeComponent implements OnInit {
-  
-  eventList: Event[] = [];
-  private searchResponse$!: Observable<TicketMasterData>;
+
+  eventList: GridEvent[] = [];
+  private searchResponse$!: Observable<GridEvent[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private service: ApiService) { }
@@ -27,12 +28,12 @@ export class HomeComponent implements OnInit {
       switchMap((term: string) => this.service.searchEventInGermany(term)),
     );
 
-    this.searchResponse$.subscribe(data => this.eventList = data._embedded.events);
+    this.searchResponse$.subscribe(events => this.eventList = events);
   }
 
   getEvents(): void {
     this.service.getDiscoveryEventGermany()
-      .subscribe(data => this.eventList = data._embedded.events);
+      .subscribe(data => this.eventList = data);
       console.log("LIST", this.eventList)
   }
 

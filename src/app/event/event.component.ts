@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Event } from '../TicketMasterData';
+import { GridEvent } from '../GridEvent';
 
 @Component({
   selector: 'event',
@@ -9,7 +9,7 @@ import { Event } from '../TicketMasterData';
 
 export class EventComponent {
 
-  @Input() event!: Event;
+  @Input() event!: GridEvent;
 
   ngOnInit(): void {
     console.log(this.event)
