@@ -9,11 +9,7 @@ import { GridEvent } from '../GridEvent';
 
 export class EventComponent {
 
-  @Input() event!: GridEvent;
-
-  ngOnInit(): void {
-    console.log(this.event)
-  }
+  @Input() eventList!: GridEvent[];
 
   goToLink(url: string){
     console.log("Link:", url)

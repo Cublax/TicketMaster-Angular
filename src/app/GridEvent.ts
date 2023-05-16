@@ -3,9 +3,9 @@ export class GridEvent {
   city: string;
   date: string;
   time: string;
-  price: number;
+  price: string;
   eventLink: string;
-  constructor(name: string, city: string, date: string, time: string, price: number, eventLink: string) {
+  constructor(name: string, city: string, date: string, time: string, price: string, eventLink: string) {
     this.name = name;
     this.city = city;
     this.date = date;

@@ -1,8 +1,12 @@
-<section class="listing">
-<!--  <img class="listing-photo" [src]="event.images[0].url" alt=" {{event.images}}">-->
-  <h2 class="listing-heading">{{ event.name }}</h2>
-  <p class="listing-location">{{event.city}}</p>
-  <p class="listing-time"> {{event.date}}, {{event.time}}</p>
-  <p class="listing-price"> {{event.price}}</p>
-  <a (click)="goToLink(event.eventLink)">Get Ticket</a>
-</section>
+<dx-data-grid
+  id="gridContainer"
+  [dataSource]="eventList"
+  [showBorders]="true"
+  [remoteOperations]="true"
+>
+  <dxi-column dataField="name" dataType="string"> </dxi-column>
+  <dxi-column dataField="city" dataType="string"> </dxi-column>
+  <dxi-column dataField="date" dataType="date"> </dxi-column>
+  <dxi-column dataField="price" dataType="string"> </dxi-column>
+  <dxi-column dataField="eventLink" dataType="string"> </dxi-column>
+</dx-data-grid>

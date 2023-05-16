@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Event, TicketMasterData } from '../TicketMasterData';
 import { ApiService } from '../api.service';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
@@ -25,14 +24,14 @@ export class HomeComponent implements OnInit {
     this.searchResponse$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.service.searchEventInGermany(term)),
+      switchMap((term: string) => this.service.searchEvents(term)),
     );
 
     this.searchResponse$.subscribe(events => this.eventList = events);
   }
 
   getEvents(): void {
-    this.service.getDiscoveryEventGermany()
+    this.service.getDiscoveryEvents()
       .subscribe(data => this.eventList = data);
       console.log("LIST", this.eventList)
   }

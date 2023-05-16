@@ -4,6 +4,5 @@
   </form>
 </section>
 
-<section class="results">
-  <event *ngFor="let eventElement of eventList" [event]="eventElement"></event>
-</section>
+<event [eventList]="eventList">
+</event>

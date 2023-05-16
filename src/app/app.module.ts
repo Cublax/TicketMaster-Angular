@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { EventComponent } from './event/event.component';
+import { DxDataGridModule } from 'devextreme-angular';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { EventComponent } from './event/event.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    DxDataGridModule
   ],
   declarations: [
     AppComponent,
